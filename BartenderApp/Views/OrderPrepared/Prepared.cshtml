@@ -1,0 +1,38 @@
+﻿@model List<BartenderApp.Models.Drink>
+    @{
+    ViewBag.Title = "Prepared";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Prepared Drinks</h2>
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Alcohol Percentage</th>
+        <th>Ready For Pickup</th>
+    </tr>
+
+    @foreach (var drink in Model)
+    {
+        <tr>
+            <td>@drink.Name</td>
+            <td>@drink.Description</td>
+            <td>$@drink.Price</td>
+            <td>@drink.AlcoholPercentage %</td>
+            <td>
+                @Html.ActionLink("Order Was Picked Up", "RemovePreparedDrink", "OrderPrepared", drink, new { @class = "btn btn-primary" })
+            </td>
+
+        </tr>
+
+
+    }
+</table>
+
+<br />
+
+<h3>@Html.ActionLink("Go Back To Menu", "Index", "Home")</h3>
+
